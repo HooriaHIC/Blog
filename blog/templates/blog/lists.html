@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<div class="flex-container">
+                {% for list in lists %}
+                <article class="media content-section3 my-boxer" style=" background-image: linear-gradient(black, rgba(0,0,0,0.5)),url({{ list.image.url }});  ">
+        
+                    <div class="media-body content">
+                        <div class="article-metadata">
+                            <a class="mr-2 text-muted">{{ list.author }}</a>
+                            <small class="text-muted">{{ list.date_posted|date:"F d, Y" }}</small>
+                        </div>
+                        <h3><a class="article-title" href="{% url 'list-detail' list.id %}">{{ list.title }}</a></h3>
+                    </div>
+                </article>
+        
+        
+        
+                {% endfor %}
+</div>
+{% endblock content %}

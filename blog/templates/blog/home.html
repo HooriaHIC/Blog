@@ -1,0 +1,58 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+<div class="image">
+    <div class="hero-image">
+        <div class="hero-text">
+            <h1 style="font-size:4em">Horror Two liners</h1>
+            <p>by Official Horror</p>
+            <a class="custom-a2" href="lists/7/">READ MORE</a>
+        </div>
+    </div>
+</div>
+
+{% for post in posts %}
+<article class="media content-section">
+    <div class="img-right" style="max-width: 250px;">
+        <img alt=".." src="{{ post.image.url }}">
+    </div>
+
+    <div class="media-body content">
+        <div class="article-metadata">
+            <a class="mr-2 text-muted" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+            <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+            <small class="text-muted ">{{ post.horror_type }}</small>
+        </div>
+        <h3><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h3>
+        <p class="article-content" style="margin-left: 30px;">{{ post.content|truncatechars:30}}</p>
+        <a class="custom-a" href="{% url 'post-detail' post.id %}">READ MORE</a>
+    </div>
+</article>
+
+{% endfor %}
+
+{% if is_paginated %}
+
+{% if page_obj.has_previous %}
+<a class="btn paginator mb-4" href="?page=1">first</a>
+<a class="btn paginator mb-4" href="?page={{ page_obj.previous_page_number }}">previous</a>
+{% endif %}
+
+{% for num in page_obj.paginator.page_range %}
+{% if page_obj.number == num %}
+<a class="btn paginator-danger mb-4" href="?page={{ num }}">{{ num }}</a>
+
+{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+<a class="btn paginator mb-4" href="?page={{ num }}">{{ num }}</a>
+
+{% endif %}
+{% endfor %}
+
+{% if page_obj.has_next %}
+<a class="btn mb-4 paginator" href="?page={{ page_obj.next_page_number }}">Next</a>
+<a class="btn mb-4 paginator" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+{% endif %}
+
+{% endif %}
+
+{% endblock content %}

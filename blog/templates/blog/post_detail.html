@@ -1,0 +1,48 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<article class="content-section2">
+    <div class="media-body">
+        <h1 class="article-title text-center" style="margin-bottom: 40px; margin-top: 40px;">{{ object.title }}</h1>
+        <div class="article-metadata">
+            <img class=" article-img"src="{{ object.author.profile.image.url }}">
+            <a class="mr-2" href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a>
+            <small class="underline-text">{{ post.horror_type}}</small>
+            <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+
+        </div>
+        <img class="mx-auto d-block img-fluid"style="max-width: 100%; max-height: 600px;" src="{{ object.image.url }}">
+        <span class="twitter-share" data-js="twitter-share">Twitter</span>
+        <span class="facebook-share" data-js="facebook-share">Facebook</span>
+        
+        <p class="article-content" style="margin-bottom: 40px; margin-top: 40px;">{{ object.content|linebreaks}}</p>
+        
+        {% if object.author == user %}
+            <div style="float: right">
+                    <a class="btn update-btn text-white btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+                    <a class="btn delete-btn text-white btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
+            </div>
+        
+        {% endif %}
+    </div>
+</article>
+
+<script>
+var twitterShare = document.querySelector('[data-js="twitter-share"]');
+
+twitterShare.onclick = function(e) {
+  e.preventDefault();
+  var twitterWindow = window.open('https://twitter.com/share?url=' + document.URL, 'twitter-popup', 'height=350,width=600');
+  if(twitterWindow.focus) { twitterWindow.focus(); }
+    return false;
+  }
+
+var facebookShare = document.querySelector('[data-js="facebook-share"]');
+
+facebookShare.onclick = function(e) {
+  e.preventDefault();
+  var facebookWindow = window.open('https://www.facebook.com/sharer/sharer.php?u=' + document.URL, 'facebook-popup', 'height=350,width=600');
+  if(facebookWindow.focus) { facebookWindow.focus(); }
+    return false;
+}
+</script>
+{% endblock content %}

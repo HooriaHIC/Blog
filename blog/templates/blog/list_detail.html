@@ -1,0 +1,146 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<article class="content-section2">
+    <div class="media-body">
+
+        <article class="media content-section3 my-boxer" style="height: 40vh; background-image: linear-gradient(black, rgba(0,0,0,0.5)),url({{ object.image.url }});  ">
+        
+            <div class="media-body content">
+                <div class="article-metadata">
+                    <a class="mr-2 text-muted">{{ object.author }}</a>
+                    <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+                </div>
+                <h2 style="margin-top: 40px; margin-left: 30px;"><a class="article-title" href="{% url 'list-detail' list.id %}">{{ object.title }}</a></h2>
+            </div>
+        </article>
+        
+
+        <article class="media content-section3">
+            <div class="img-right" style="max-width: 200px;">
+                <img class="img-right" style="max-width: 200px;"src="{{ object.item1_image.url }}">
+            </div>
+
+            <div class="media-body content">
+                <p class="article-content" style="margin-bottom: 40px; margin-top: 20px; margin-left: 20px"><em>{{ object.item1 }}</em></p>
+            </div>
+        </article>        
+        
+        <article class="media content-section3">
+            <div class="img-right" style="max-width: 200px;">
+                <img class="img-right" style="max-width: 200px;"src="{{ object.item2_image.url }}">
+            </div>
+
+            <div class="media-body content">
+                <p class="article-content" style="margin-bottom: 40px; margin-top: 20px; margin-left: 20px"><em>{{ object.item2}}</em></p>
+            </div>
+        </article>        
+        
+        <article class="media content-section3">
+            <div class="img-right" style="max-width: 200px;">
+                <img class="img-right" style="max-width: 200px;"src="{{ object.item3_image.url }}">
+            </div>
+
+            <div class="media-body content">
+                <p class="article-content" style="margin-bottom: 40px; margin-top: 20px;margin-left: 20px"><em>{{ object.item3}}</em></p>
+            </div>
+        </article>        
+        
+        <article class="media content-section3">
+            <div class="img-right" style="max-width: 200px;">
+                <img class="img-right" style="max-width: 200px;"src="{{ object.item4_image.url }}">
+            </div>
+
+            <div class="media-body content">
+                <p class="article-content" style="margin-bottom: 40px; margin-top: 20px; margin-left: 20px"><em>{{ object.item4}}</em></p>
+            </div>
+        </article>        
+        
+        <article class="media content-section3">
+            <div class="img-right" style="max-width: 200px;">
+                <img class="img-right" style="max-width: 200px;"src="{{ object.item5_image.url }}">
+            </div>
+
+            <div class="media-body content">
+                <p class="article-content" style="margin-bottom: 40px; margin-top: 20px; margin-left: 20px"><em>{{ object.item5}}</em></p>
+            </div>
+        </article>        
+        
+        <article class="media content-section3">
+            <div class="img-right" style="max-width: 200px;">
+                <img class="img-right" style="max-width:200px;"src="{{ object.item6_image.url }}">
+            </div>
+
+            <div class="media-body content">
+                <p class="article-content" style="margin-bottom: 40px; margin-top: 20px; margin-left: 20px"><em>{{ object.item6}}</em></p>
+            </div>
+        </article>        
+        
+        <article class="media content-section3">
+            <div class="img-right" style="max-width: 200px;">
+                <img class="img-right" style="max-width: 200px;"src="{{ object.item7_image.url }}">
+            </div>
+
+            <div class="media-body content">
+                <p class="article-content" style="margin-bottom: 40px; margin-top: 20px; margin-left: 20px"><em>{{ object.item7}}</em></p>
+            </div>
+        </article>        
+        
+        <article class="media content-section3">
+            <div class="img-right" style="max-width: 200px;">
+                <img class="img-right" style="max-width: 200px;"src="{{ object.item8_image.url }}">
+            </div>
+
+            <div class="media-body content">
+                <p class="article-content" style="margin-bottom: 40px; margin-top: 20px; margin-left: 20px"><em>{{ object.item8}}</em></p>
+            </div>
+        </article>        
+        
+        <article class="media content-section3">
+            <div class="img-right" style="max-width: 200px;">
+                <img class="img-right" style="max-width: 200px;"src="{{ object.item9_image.url }}">
+            </div>
+
+            <div class="media-body content">
+                <p class="article-content" style="margin-bottom: 40px; margin-top: 20px; margin-left: 20px"><em>{{ object.item9}}</em></p>
+            </div>
+        </article>        
+        
+        <article class="media content-section3">
+            <div class="img-right" style="max-width: 200px;">
+                <img class="img-right" style="max-width: 200px;"src="{{ object.item10_image.url }}">
+            </div>
+
+            <div class="media-body content">
+                <p class="article-content" style="margin-bottom: 40px; margin-top: 20px; margin-left: 20px"><em>{{ object.item10}}</em></p>
+            </div>
+        </article>   
+
+        <span class="twitter-share" data-js="twitter-share">Twitter</span>
+        <span class="facebook-share" data-js="facebook-share">Facebook</span>
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style" style="margin-top: -35px; margin-left: -20px;">
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+        </div>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+    </div>
+</article>
+
+<script>
+var twitterShare = document.querySelector('[data-js="twitter-share"]');
+
+twitterShare.onclick = function(e) {
+  e.preventDefault();
+  var twitterWindow = window.open('https://twitter.com/share?url=' + document.URL, 'twitter-popup', 'height=350,width=600');
+  if(twitterWindow.focus) { twitterWindow.focus(); }
+    return false;
+  }
+
+var facebookShare = document.querySelector('[data-js="facebook-share"]');
+
+facebookShare.onclick = function(e) {
+  e.preventDefault();
+  var facebookWindow = window.open('https://www.facebook.com/sharer/sharer.php?u=' + document.URL, 'facebook-popup', 'height=350,width=600');
+  if(facebookWindow.focus) { facebookWindow.focus(); }
+    return false;
+}
+</script>
+{% endblock content %}
